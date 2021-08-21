@@ -18,5 +18,4 @@ screen dwtd_qte(qte_action,qte_time=1.0):
     timer qte_time action Return(False)
     modal True
     window id "qte":
-        vbox:
-            textbutton qte_action action Return(True) at Position(xpos=0.5)
+        textbutton qte_action action Return(True) at top
