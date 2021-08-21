@@ -1,17 +1,22 @@
 init:
-    find label seccont
-    search say "Getting ready, I noticed something lying on the table. It was the note Remy had left for me in case I needed anything. Along with his own home phone and work number, there were also some numbers for delivery of food and other necessities, as well as emergency and even janitorial services. He had certainly thought of everything, even though I now had to wonder what a dragon plumber might look like." as plumber
-    search python
-    callto label dwtd_dontslip from plumber return here
+    find label seccont:
+        search say "Getting ready, I noticed something lying on the table. It was the note Remy had left for me in case I needed anything. Along with his own home phone and work number, there were also some numbers for delivery of food and other necessities, as well as emergency and even janitorial services. He had certainly thought of everything, even though I now had to wonder what a dragon plumber might look like." as dwtd_c1_dontslip_linknode
+        search python
+        callto label dwtd_c1_dontslip from dwtd_c1_dontslip_linknode return here
 
-label dwtd_dontslip:
+label dwtd_c1_dontslip:
     play sound "fx/door/doorbell.wav"
     nvl clear
-    n "My musings were interrupted when the doorbel rang. When I stood to walk to the door--{w=1.0}"
+    n "My musings were interrupted when the doorbel rang. When I stood to walk to the door--{w=1.0}{nw}"
     window hide
     nvl clear
 
-    call screen dwtd_qte("Don't trip!")
+    if dwtd.check_keypoint("C1"):
+        call screen dwtd_qte("Don't trip!")
+    else:
+        play sound "fx/system3.wav"
+        s "This timeline is hardcore, pal. You can't reload to fix this."
+        $ _return = False
     if not _return:
         $ renpy.pop_call()
         play sound "fx/impact3.ogg"

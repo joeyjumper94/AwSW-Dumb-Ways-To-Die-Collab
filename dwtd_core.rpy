@@ -1,4 +1,7 @@
 label dwtd_youdied(cause_of_death="Who knows how you died, but for me it was entertaining."):
+    if dwtd.hardcore == True:
+        $ persistent.dwtd_keypoint = dwtd.keypoint_enum["RESET"]
+
     play sound "fx/system3.wav"
     s "You died."
     play sound "fx/system3.wav"
