@@ -1,0 +1,1 @@
+image dwtdfirecafe = "bg/dwtdfirecafe.jpg"
