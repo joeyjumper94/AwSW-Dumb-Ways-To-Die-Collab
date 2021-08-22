@@ -1,8 +1,8 @@
 init:
     find label _call_skiptut_3:
-        search say "Shh, be quiet. I'll let you know more as soon as I can. But for now, let's just play along. After all, we already have one of these babies." as dwtd_cw_stopslap_linknode
+        search say "Shh, be quiet. I'll let you know more as soon as I can. But for now, let's just play along. After all, we already have one of these babies." as dwtd_c1_stopslap_linknode
         search say "God knows we need them."
-        callto label dwtd_c1_stopslap from dwtd_cw_stopslap_linknode return here
+        callto label dwtd_c1_stopslap from dwtd_c1_stopslap_linknode return here
 
 label dwtd_c1_stopslap:
     m "Reza lifted his hand, seemingly to give the generator a light pat."
