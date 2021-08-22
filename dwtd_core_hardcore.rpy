@@ -10,7 +10,7 @@ init:
 
 
 label dwtd_core_init_hardcore:
-    python in dwtd:
+    init python in dwtd:
         #Ah, Python2. Why did you order your dicts? It's nice, but why?
         keypoint_names = ['RESET','C1','C1_FOUND_LEMON','C1_CHARACTER_SELECT','C2','C2_CHARACTER_SELECT','C3','C3_CHARACTER_SELECT','C4','C4_CHARACTER_SELECT','C5']
         keypoint_enum = {\
@@ -55,6 +55,7 @@ label dwtd_core_init_hardcore:
 
         hardcore = False
     if persistent.c4skip:
+        $ dwtd.hardcore = False
         play sound "fx/system3.wav"
         s "It appears the universe you're entering into is {i}significantly{/i} more dangerous than most accessible through the portal."
         play sound "fx/system3.wav"
