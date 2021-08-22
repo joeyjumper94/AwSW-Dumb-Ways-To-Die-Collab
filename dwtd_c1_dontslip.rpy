@@ -18,6 +18,7 @@ label dwtd_c1_dontslip:
         s "This timeline is hardcore, pal. You can't reload to fix this."
         $ _return = False
     if not _return:
+        $ dwtd.will_die()
         $ renpy.pop_call()
         play sound "fx/impact3.ogg"
         scene black with None

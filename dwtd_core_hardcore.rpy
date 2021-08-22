@@ -48,6 +48,10 @@ label dwtd_core_init_hardcore:
                     print("Keypoint set!")
             else:
                 renpy.error("Got invalid previous keypoint from keypoint argument %r",kpt)
+        
+        def will_die():
+            if hardcore:
+                renpy.game.persistent.dwtd_keypoint = keypoint_enum['RESET']
 
         hardcore = False
     if persistent.c4skip:
