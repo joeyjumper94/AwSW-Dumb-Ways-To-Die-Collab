@@ -22,8 +22,7 @@ label dwtd_c1_fishdeath:
             with Shake ((0, 0, 0, 0), 1.5, dist=10)
             $ renpy.pause (3.0)
 
-
-            call dwtd_youdied("Turns out the fish was poisonous. That's too bad.")
+            call dwtd_youdied("Turns out the fish wasn't edible for humans. That's too bad.")
                 
 
         "[[Don't eat it.]" if dwtd.check_keypoint("C1"):
