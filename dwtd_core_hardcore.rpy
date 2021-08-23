@@ -33,21 +33,22 @@ label dwtd_core_init_hardcore:
             return ((not hardcore) or (renpy.game.persistent.dwtd_keypoint >= keypoint_enum[kpt]))
 
         def set_keypoint(kpt):
-            if kpt not in keypoint_names:
-                renpy.error("Invalid keypoint name: %s"%kpt)
-            if renpy.game.persistent.dwtd_keypoint not in keypoint_enum.values():
-                renpy.error("Invalid dwtd_keypoint state: %u")
-            print("Setting keypoint %s..."%kpt)
-            # print("Test: %r"%renpy.game.persistent.dwtd_keypoint)
-            prev_kpt_idx = keypoint_names.index(kpt)-1
-            # print("Idx: %r"%prev_kpt_idx)
-            if 0 <= prev_kpt_idx < len(keypoint_names)-1:
-                prev_kpt = keypoint_names[prev_kpt_idx]
-                if keypoint_enum[prev_kpt] == renpy.game.persistent.dwtd_keypoint:
-                    renpy.game.persistent.dwtd_keypoint = keypoint_enum[kpt]
-                    print("Keypoint set!")
-            else:
-                renpy.error("Got invalid previous keypoint from keypoint argument %r",kpt)
+            if hardcore:
+                if kpt not in keypoint_names:
+                    renpy.error("Invalid keypoint name: %s"%kpt)
+                if renpy.game.persistent.dwtd_keypoint not in keypoint_enum.values():
+                    renpy.error("Invalid dwtd_keypoint state: %u")
+                # print("Setting keypoint %s..."%kpt)
+                # print("Test: %r"%renpy.game.persistent.dwtd_keypoint)
+                prev_kpt_idx = keypoint_names.index(kpt)-1
+                # print("Idx: %r"%prev_kpt_idx)
+                if 0 <= prev_kpt_idx < len(keypoint_names)-1:
+                    prev_kpt = keypoint_names[prev_kpt_idx]
+                    if keypoint_enum[prev_kpt] == renpy.game.persistent.dwtd_keypoint:
+                        renpy.game.persistent.dwtd_keypoint = keypoint_enum[kpt]
+                        # print("Keypoint set!")
+                else:
+                    renpy.error("Got invalid previous keypoint from keypoint argument %r",kpt)
         
         def will_die():
             if hardcore:
