@@ -29,14 +29,16 @@ label dwtd_c1_portalshootout:
     c "What won't?"
     Rz "When do you think we are? Think, [player_name]. That moon is ours, but rotated. The beaches, the flora. Even the dragons themselves look like our dinosaurs."
     Rz "This is the Cretaceous. And that..."
-    scene stars dk at Pan((0, 200), (0, 0), 6.0) with dissolve
+    scene chap1 at Pan((0, 100), (0, 0), 2.0) with dissolve
     m "He pointed into the sky."
+    show chap1:
+        ease 1.0 zoom 3.0 xpos -1.9
     Rz "That's the end."
     scene np1n dk at Pan ((350,200), (350,200), 0.0)
     show reza normal dk
     with dissolve
-    Rz "I've been talking with our leadership. We have to take the generators we can, while we can."
-    Rz "You're here to keep them distracted. Keep them guessing."
+    Rz "I've been talking with our leadership. Secret messages, just like the one I gave you. We have to take the generators we can, while we can."
+    Rz "You're here to keep them distracted. Keep them thinking that the deal is proceeding as normal."
     c "Shouldn't we warn them?"
     Rz annoyed dk "Warn them? [player_name]..."
     Rz "No, we have to do it. You know the state we're in."
@@ -52,7 +54,7 @@ label dwtd_c1_portalshootout:
     show reza gunpoint dk at Position(xpos = 0.8)
     show np1n dk at Position(xpos=1.05, xanchor="right")
     with ease
-    show maverick angry flip dk at left with easeinleft
+    show maverick angry flip dk at Position(xpos=0.0) with easeinleft
 
     Mv "You come here to steal our generators? And to fail to warn us of what?"
     c "Reza, wait. I'm not sure-{w=1.0}{nw}"
@@ -63,8 +65,8 @@ label dwtd_c1_portalshootout:
     show reza gunpoint dk with dissolve
     play sound "fx/rev.ogg"
     queue sound "fx/growl.wav"
-    $ renpy.pause (0.5)
-    call screen dwtd_qte("Stop Reza.", 1.0)
+    $ renpy.pause (0.8)
+    call screen dwtd_qte("Stop Reza.", 1.5)
     if _return:
         show reza gunself dk with dissolve
         play sound "fx/gunshot2.wav"
@@ -100,7 +102,7 @@ label dwtd_c1_portalshootout:
         $ renpy.pause(0.2)
         play sound "fx/dragonpain.wav"
         show maverick angry flip dk:
-            linear 0.3 xpos -0.05
+            easeout 0.3 xpos -0.05
         $ renpy.pause(2.0)
         Rz angry dk "That's not stopping him. Run, [player_name]!"
         show reza angry flip dk
@@ -109,17 +111,38 @@ label dwtd_c1_portalshootout:
         m "I struggled to shake off the shock of our mission going sideways so quickly. By the time I'd taken my first step, Maverick was on top of me."
 
         show maverick rage flip dk:
-            parallel:
-                ease 0.8 zoom 1.5
-            parallel:
-                ease 0.8 xpos -0.3
+            ease 0.8 zoom 1.5 xpos 0.0
+        play sound "fx/whooshimpact.wav"
         $ renpy.pause(0.8)
         play sound "fx/bite.ogg"
-        scene black with None
+        scene black with hpunch
+        play sound2 "fx/rolldownhill.ogg"
 
         m "I hit the ground in a world of pain."
-        
-        play sound "fx/bite.wav"
-        m "Everything faded as I felt chunks torn away."
 
-        call dwtd_youdied("In your last moments, you learned what it was like to be bit into alive.")
+        scene starsrx at Pan((0, 200), (0, 0), 20.0)
+        show starsr at Pan((0, 200), (0, 0), 20.0)
+        show maverick angry c flip dkr:
+            zoom 2.0
+            yanchor -0.5
+            ypos -0.1
+            ease 0.5 xpos -0.3
+            ease 0.5 xpos -0.4
+            ease 0.5 xpos -0.3
+            ease 0.5 xpos -0.4
+            pause 0.4
+            easeout 0.1 ypos -0.4
+        with dissolve
+        $ renpy.pause(2.0)
+        
+        play sound "fx/bitescr.ogg"
+        m "Everything faded as I felt a chunk of me torn away."
+        play sound "fx/snarl.ogg"
+
+        $ renpy.pause (0.3)
+        play sound2 ["fx/takeoff.ogg", "<silence .5>", "fx/gunshots3.ogg", "fx/dragonpain.wav"]
+
+        hide maverick with easeoutright
+        hide starsr with dissolvemed
+
+        call dwtd_youdied("In your last moments, you learned what it was like to be torn apart alive.")
