@@ -17,6 +17,8 @@ label dwtd_c1_stopslap:
         $ dwtd.will_die()
         $ renpy.pop_call()
         stop music fadeout 1.0
+        play sound "fx/beeps2.ogg"
+        $ renpy.pause (0.3)
         play sound "fx/explosion.ogg"
         scene black with Shake ((0, 0, 0, 0), 3.0, dist=50)
         $ renpy.pause (4.0)
@@ -25,7 +27,10 @@ label dwtd_c1_stopslap:
     
     m "I grabbed Reza's wrist moments before his hand made contact with the generator."
     c "Maybe you shouldn't slap it like that, it might be fragile."
-    Rz annoyed "Why are you so careful all of a sudden?"
-    c "Let's just make sure we don't break any of them before they go through the portal."
-    show reza normal with dissolve
+    if blood:
+        Rz annoyed "Why are you so careful all of a sudden?"
+        c "Let's just make sure we don't break any of them before they go through the portal."
+        show reza normal with dissolve
+    else:
+        Rz "Good idea."
     return
