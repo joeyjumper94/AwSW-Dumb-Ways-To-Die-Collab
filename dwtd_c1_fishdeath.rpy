@@ -25,7 +25,7 @@ label dwtd_c1_fishdeath:
             call dwtd_youdied("Turns out the fish wasn't edible for humans. That's too bad.")
                 
 
-        "[[Don't eat it.]" if dwtd.check_keypoint("C1"):
+        "[[Don't eat it.]" if dwtd.check_keypoint():
             pass
 
     m "I decided against eating my somewhat unusual breakfast."

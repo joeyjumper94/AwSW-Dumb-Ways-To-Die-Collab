@@ -7,7 +7,7 @@ init:
     callto label dwtd_c1_portalshootout from dwtd_c1_portalshootout_start return here
 
 label dwtd_c1_portalshootout:
-    if not dwtd.check_keypoint('C1_FOUND_LEMON'):
+    if not dwtd.check_keypoint():
         play sound "fx/system3.wav"
         s "Looks like this \"Hardcore\" timeline is broken. Maverick's just going to be late."
     else:

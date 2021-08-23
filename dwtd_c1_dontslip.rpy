@@ -11,7 +11,7 @@ label dwtd_c1_dontslip:
     window hide
     nvl clear
 
-    if dwtd.check_keypoint("C1"):
+    if dwtd.check_keypoint():
         call screen dwtd_qte("Don't trip!")
     else:
         play sound "fx/system3.wav"

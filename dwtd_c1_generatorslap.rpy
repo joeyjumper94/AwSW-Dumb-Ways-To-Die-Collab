@@ -7,7 +7,7 @@ init:
 label dwtd_c1_stopslap:
     m "Reza lifted his hand, seemingly to give the generator a light pat."
 
-    if dwtd.check_keypoint("C1"):
+    if dwtd.check_keypoint():
         call screen dwtd_qte("Stop him.")
     else:
         play sound "fx/system3.wav"

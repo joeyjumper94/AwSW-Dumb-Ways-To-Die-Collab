@@ -1,6 +1,5 @@
 label dwtd_youdied(cause_of_death="Who knows how you died, but for me it was entertaining."):
-    if dwtd.hardcore == True:
-        $ persistent.dwtd_keypoint = dwtd.keypoint_enum["RESET"]
+    $ dwtd.will_die()
     play sound "fx/system3.wav"
     s "[cause_of_death]"
     play sound "fx/system3.wav"
@@ -14,7 +13,10 @@ screen dwtd_youdied_options_screen tag smallscreen:
     modal True
     window id "dwtd_youdied" at popup:
         style "smallwindow"
-        hbox:
+        hbox at center:
+            xmaximum 900
+            xfill False
+            xalign 0.5
             spacing 30
             textbutton "Load" action ShowMenu("load")
             textbutton "Main Menu" action MainMenu(confirm=False)

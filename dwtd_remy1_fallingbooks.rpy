@@ -81,7 +81,7 @@ label dwtd_r1_bookshelfcrush:
         $ renpy.music.set_pause(True, "music")
         play sound "fx/fall3.ogg"
         
-        if dwtd.check_keypoint("C1"):
+        if dwtd.check_keypoint():
             call screen dwtd_qte("Dodge.")
         else:
             play sound "fx/system3.wav"
