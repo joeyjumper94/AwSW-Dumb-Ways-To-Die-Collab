@@ -24,12 +24,15 @@ label dwtd_core_init_hardcore:
                 return 1
 
         def check_keypoint():
-            kpt = get_chapter()
-            if not (1 <= kpt <= 5):
-                renpy.error("Invalid chapter index retrieved by dwtd.get_chapter()")
-            if not (0 <= renpy.game.persistent.dwtd_keypoint <= 5):
-                renpy.error("Invalid keypoint index in persistent.dwtd_keypoint")
-            return ((not hardcore) or (renpy.game.persistent.dwtd_keypoint >= kpt))
+            if hardcore:
+                kpt = get_chapter()
+                if not (1 <= kpt <= 5):
+                    renpy.error("Invalid chapter index retrieved by dwtd.get_chapter()")
+                if not (0 <= renpy.game.persistent.dwtd_keypoint <= 5):
+                    renpy.error("Invalid keypoint index in persistent.dwtd_keypoint")
+                return renpy.game.persistent.dwtd_keypoint >= kpt
+            else:
+                return True
 
         def set_keypoint(ch):
             if hardcore:
@@ -44,6 +47,8 @@ label dwtd_core_init_hardcore:
                 renpy.game.persistent.dwtd_keypoint = 0
 
         hardcore = False
+    if persistent.endingsseen == 0:
+        return
     if persistent.c4skip:
         $ dwtd.hardcore = False
         play sound "fx/system3.wav"
