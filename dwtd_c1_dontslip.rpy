@@ -32,6 +32,8 @@ label dwtd_c1_dontslip:
         $ renpy.pause (0.8)
         Sb "I am so fired for this..."
         scene black with dissolvemed
+
+        show dwtd_youdied_text at top with easeintop
         call dwtd_youdied("You tripped on the way to the door and cracked your skull open on the apartment floor.")
 
     m "When I opened the door, I was met by another dragon."
