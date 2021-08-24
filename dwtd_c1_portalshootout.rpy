@@ -6,6 +6,10 @@ init:
     branch "Yeah, I know."
     callto label dwtd_c1_portalshootout from dwtd_c1_portalshootout_start return here
 
+    search show "reza gunpoint dk"
+    callto label dwtd_c1_portalshootout_2
+
+
 label dwtd_c1_portalshootout:
     if not dwtd.check_keypoint():
         play sound "fx/system3.wav"
@@ -154,3 +158,44 @@ label dwtd_c1_portalshootout:
         show dwtd_youdied_text at top with easeintop
         $ renpy.pause(4.0)
         call dwtd_youdied("In your last moments, you learned what it was like to be torn apart alive.")
+
+
+label dwtd_c1_portalshootout_2:
+    if not dwtd.check_keypoint():
+        play sound "fx/system3.wav"
+        s "Hardcore timelines can't be fixed!"
+    else:
+        call screen dwtd_qte("Intervene.", 1.0)
+        if not _return:
+            return
+    $ renpy.pop_call()
+    $ dwtd.will_die()
+    play sound "fx/gunshot2.wav"
+    show reza angry dk
+    show maverick scared flip dk
+    with dissolve
+    play soundloop "fx/hiss.ogg" fadein 1.0
+
+    m "I threw myself into Reza's gun arm, forcing the gun away and saving Maverick the bullet. Instead, a new, round hole had appeared in the cardboard box on the portal platform."
+    show maverick angry dk with dissolve
+    $ renpy.pause (0.3)
+    hide maverick with easeoutleft
+    play sound2 "fx/takeoff.ogg"
+    Rz "That's right! Run!"
+    play sound "fx/rev.ogg"
+    show reza gunpoint dk with dissolve
+    c "Reza! Stop!"
+    Rz angry dk "Get out of my way, [player_name]! I'll deal with you later. You know we can't let him--"
+
+    stop soundloop fadeout 0.5
+    play sound "fx/explosion.ogg"
+    scene black with hpunch
+    $ renpy.pause(3.0)
+    play sound2 "fx/rolldownhill.ogg"
+    scene np1 dwtd_explosion at Pan((50,0), (400,200), 10.0) with dissolveslow
+    play soundloop "fx/fire2.ogg" fadein 2.0
+    $ renpy.pause(7.0)
+    call dwtd_deathsound(5)
+    show dwtd_youdied_text at top with easeintop
+    $ renpy.pause(4.0)
+    call dwtd_youdied("I warned you about dead-end timelines. But did you listen? Oh no. You had to try to stop Reza with a generator sitting on the portal platform.")
