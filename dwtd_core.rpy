@@ -7,6 +7,14 @@ label dwtd_youdied(cause_of_death="Who knows how you died, but for me it was ent
 
     $ MainMenu(confirm=False)()
 
+label dwtd_deathsound(sound_number=0, sound_playtime=4.0): #It is recommended to add a renpy.pause equal to the sound_playtime *after* you show the dwtd_youdied_text
+    $ death_sounds = ["fx/impact2.ogg", "fx/chapter2.ogg", "fx/chapter2.ogg", "fx/chapter3.ogg", "fx/chapter4.ogg", "fx/chapter5.ogg"]
+    if not sound_number == 0:
+        play music death_sounds[sound_number - 1]
+        $ renpy.pause (0.1) #Doesn't play if I don't have this
+        stop music fadeout sound_playtime
+    return
+
 image dwtd_youdied_text = "image/ui/youdied.png"
 
 screen dwtd_youdied_options_screen tag smallscreen:
@@ -15,6 +23,7 @@ screen dwtd_youdied_options_screen tag smallscreen:
         style "smallwindow"
         hbox at center:
             xmaximum 900
+            xoffset 50
             xfill False
             xalign 0.5
             spacing 30
