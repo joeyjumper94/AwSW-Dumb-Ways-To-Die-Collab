@@ -32,7 +32,7 @@ label dwtd_c1_dontslip:
         $ renpy.pause (0.8)
         Sb "I am so fired for this..."
         scene black with dissolvemed
-        call dwtd_deathsound(5)
+        $ dwtd.deathsound(5)
         show dwtd_youdied_text at top with easeintop
         $ renpy.pause(4.0)
         call dwtd_youdied("You tripped on the way to the door and cracked your skull open on the apartment floor.")
