@@ -27,17 +27,14 @@ image dwtd_youdied_text = "image/ui/youdied.png"
 
 screen dwtd_youdied_options_screen tag smallscreen:
     modal True
-    window id "dwtd_youdied" at popup:
-        style "smallwindow"
-        hbox at center:
-            xmaximum 900
-            xoffset 50
-            xfill False
-            xalign 0.5
-            spacing 30
-            textbutton "Load" action ShowMenu("load")
-            textbutton "Main Menu" action MainMenu(confirm=False)
-            textbutton "Quit" action Quit()
+    grid 3 1:
+        xanchor 0.5
+        xpos 0.5
+        ypos 0.9
+        spacing 30
+        imagebutton idle "image/ui/comicsans_load.png" action ShowMenu("load") at center
+        imagebutton idle "image/ui/comicsans_mainmenu.png" action MainMenu(confirm=False) at center
+        imagebutton idle "image/ui/comicsans_quit.png" action Quit() at center
 
 screen dwtd_qte(qte_action,qte_time=1.0):
     timer qte_time action Return(False)
