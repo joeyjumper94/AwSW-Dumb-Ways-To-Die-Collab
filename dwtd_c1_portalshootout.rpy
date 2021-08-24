@@ -95,6 +95,10 @@ label dwtd_c1_portalshootout:
         scene black with dissolveslow
 
         $ renpy.pause (0.5)
+
+        call dwtd_deathsound(5)
+        show dwtd_youdied_text at top with easeintop
+        $ renpy.pause(4.0)
         
         call dwtd_youdied("Reza shot you for the one and only crime warranting immediate execution under your home city's laws: being a traitor. Maybe don't do that to him?")
     else:
@@ -136,7 +140,7 @@ label dwtd_c1_portalshootout:
         $ renpy.pause(2.0)
         
         play sound "fx/bitescr.ogg"
-        m "Everything faded as I felt a chunk of me torn away."
+        m "Everything faded as I felt a chunk of my flesh torn away."
         play sound "fx/snarl.ogg"
 
         $ renpy.pause (0.3)
@@ -145,4 +149,8 @@ label dwtd_c1_portalshootout:
         hide maverick with easeoutright
         hide starsr with dissolvemed
 
+        $ renpy.pause (7.0)
+        call dwtd_deathsound(5)
+        show dwtd_youdied_text at top with easeintop
+        $ renpy.pause(4.0)
         call dwtd_youdied("In your last moments, you learned what it was like to be torn apart alive.")

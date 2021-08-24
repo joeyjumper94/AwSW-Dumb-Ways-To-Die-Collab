@@ -21,7 +21,9 @@ label dwtd_c1_fishdeath:
             play sound "fx/impact3.ogg"
             with Shake ((0, 0, 0, 0), 1.5, dist=10)
             $ renpy.pause (3.0)
-
+            call dwtd_deathsound(5)
+            show dwtd_youdied_text at top with easeintop
+            $ renpy.pause(4.0)
             call dwtd_youdied("Turns out the fish wasn't edible for humans. That's too bad.")
                 
 

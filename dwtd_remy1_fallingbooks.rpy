@@ -93,7 +93,10 @@ label dwtd_r1_bookshelfcrush:
             $ dwtd.will_die()
             $ renpy.pop_call()
             scene black with Shake ((0, 0, 0, 0), 1.5, dist=50)
-            $ renpy.pause(2.0)
+            $ renpy.pause (2.0)
+            call dwtd_deathsound(5)
+            show dwtd_youdied_text at top with easeintop
+            $ renpy.pause(4.0)
             call dwtd_youdied("You got crushed by the bookshelf while sorting the books. Try to be quicker on your feet next time.")
         $ dwtd.avoided_r1_bookshelf = True
         m "I narrowly avoided the bookshelf as it came crashing down in front of me."
