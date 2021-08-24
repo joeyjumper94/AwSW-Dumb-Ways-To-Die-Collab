@@ -15,4 +15,8 @@ Publicly available core methods:
         + `'C4'` - Made it to Chapter 4 title card
         + `'C4_CHARACTER_SELECT'` - Made it to choosing a character in Chapter 4
         + `'C5'` - Made it to Chapter 5 title card
++ `show dwtd_youdied_text` - Display the "You Died" comic sans text to tell the player what the hell's going on.
++ `call dwtd_deathsound(sound_number,sound_playtime)` - Play a sound while displaying the "You Died" text, for tonal consistency.
+    + `sound_number` - How many "booms" in the sound. No consistent direction.
+    + `sound_playtime` - Fadeout time of the booms, as they're almost universally too long. It's recommended to follow this statement with `renpy.pause()` of equivalent time to let things really sink in for the player.
 + `call dwtd_youdied("CAUSE OF DEATH")` - End of a death path. Displays `"CAUSE OF DEATH"` as read by system, then opens a menu screen to load, mainmenu, or quit.
