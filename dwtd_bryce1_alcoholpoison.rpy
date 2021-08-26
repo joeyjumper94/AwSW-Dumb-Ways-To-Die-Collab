@@ -42,18 +42,18 @@ init:
 
 
     python in dwtd:
-        bryce1_alcoholpoisoning = 0;
+        bryce1_alcoholpoisoning = 0
 
 label dwtd_bryce1_alcoholpoison_init:
     python in dwtd:
-        bryce1_alcoholpoisoning = 0;
+        bryce1_alcoholpoisoning = 0
 
         if get_chapter() == 1:
-            bryce1_alcoholpoisoning = renpy.python.store_dicts['store'].get('medstaken', 0);
+            bryce1_alcoholpoisoning = renpy.python.store_dicts['store'].get('medstaken', 0)
     return
 
 label dwtd_bryce1_alcoholpoison_deny:
-    $ dwtd.bryce1_alcoholpoisoning += 1;
+    $ dwtd.bryce1_alcoholpoisoning += 1
     return
 
 label dwtd_bryce1_alcoholpoison_end:
