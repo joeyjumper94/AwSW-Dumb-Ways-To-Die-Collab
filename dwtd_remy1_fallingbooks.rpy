@@ -97,7 +97,7 @@ label dwtd_r1_bookshelfcrush:
             $ dwtd.deathsound(5)
             show dwtd_youdied_text at top with easeintop
             $ renpy.pause(4.0)
-            call dwtd_youdied("You got crushed by the bookshelf while sorting the books. Try to be quicker on your feet next time.")
+            call dwtd_youdied("Falling Books", "You got crushed by the bookshelf while sorting the books. Try to be quicker on your feet next time.")
         $ dwtd.avoided_r1_bookshelf = True
         m "I narrowly avoided the bookshelf as it came crashing down in front of me."
         show remy look with easeinright

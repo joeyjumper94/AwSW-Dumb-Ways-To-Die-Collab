@@ -1,5 +1,8 @@
-label dwtd_youdied(cause_of_death="Who knows how you died, but for me it was entertaining."):
+label dwtd_youdied(deathname,cause_of_death="Who knows how you died, but for me it was entertaining."):
     $ dwtd.will_die()
+    if not persistent.dwtd_death_set:
+        $ persistent.dwtd_death_set = python_set()
+    $ persistent.dwtd_death_set.add(deathname)
     play sound "fx/system3.wav"
     s "[cause_of_death]"
     play sound "fx/system3.wav"

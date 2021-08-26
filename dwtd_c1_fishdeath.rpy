@@ -24,7 +24,7 @@ label dwtd_c1_fishdeath:
             $ dwtd.deathsound(5)
             show dwtd_youdied_text at top with easeintop
             $ renpy.pause(4.0)
-            call dwtd_youdied("Turns out the fish wasn't edible for humans. That's too bad.")
+            call dwtd_youdied("Something Fishy","Turns out the fish wasn't edible for humans. That's too bad.")
                 
 
         "[[Don't eat it.]" if dwtd.check_keypoint():

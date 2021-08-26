@@ -73,4 +73,4 @@ label dwtd_bryce1_alcoholpoison_end:
     $ dwtd.deathsound(2)
     show dwtd_youdied_text at top with easeintop
     $ renpy.pause(4.0)
-    call dwtd_youdied("If you're such a lightweight, perhaps you shouldn't dive right into a drinking contest with a dragon. Alcohol poisoning is a dangerous issue.")
+    call dwtd_youdied("Alcohol Poisoning","If you're such a lightweight, perhaps you shouldn't dive right into a drinking contest with a dragon. Alcohol poisoning is a dangerous issue.")

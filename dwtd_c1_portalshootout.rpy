@@ -157,7 +157,7 @@ label dwtd_c1_portalshootout:
         $ dwtd.deathsound(5)
         show dwtd_youdied_text at top with easeintop
         $ renpy.pause(4.0)
-        call dwtd_youdied("In your last moments, you learned what it was like to be torn apart alive.")
+        call dwtd_youdied("Suspect", "In your last moments, you learned what it was like to be torn apart alive.")
 
 
 label dwtd_c1_portalshootout_2:
@@ -198,4 +198,4 @@ label dwtd_c1_portalshootout_2:
     $ dwtd.deathsound(5)
     show dwtd_youdied_text at top with easeintop
     $ renpy.pause(4.0)
-    call dwtd_youdied("I warned you about dead-end timelines. But did you listen? Oh no. You had to try to stop Reza with a generator sitting on the portal platform.")
+    call dwtd_youdied("Naive", "I warned you about dead-end timelines. But did you listen? Oh no. You had to try to stop Reza with a generator sitting on the portal platform.")

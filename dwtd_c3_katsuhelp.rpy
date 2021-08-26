@@ -35,4 +35,4 @@ label dwtd_c3_katsuhelp:
     $ dwtd.deathsound(5)
     show dwtd_youdied_text at top with easeintop
     $ renpy.pause(4.0)
-    call dwtd_youdied("Be careful with strangers asking for you to walk over to their carts.")
+    call dwtd_youdied("Stranger's Cart", "Be careful with strangers asking for you to walk over to their carts.")

@@ -35,7 +35,7 @@ label dwtd_c1_dontslip:
         $ dwtd.deathsound(5)
         show dwtd_youdied_text at top with easeintop
         $ renpy.pause(4.0)
-        call dwtd_youdied("You tripped on the way to the door and cracked your skull open on the apartment floor.")
+        call dwtd_youdied("Day One Nerves","You tripped on the way to the door and cracked your skull open on the apartment floor.")
 
     m "When I opened the door, I was met by another dragon."
     play sound "fx/door/handle.wav"

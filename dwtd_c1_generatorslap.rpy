@@ -27,7 +27,7 @@ label dwtd_c1_stopslap:
         $ dwtd.deathsound(5)
         show dwtd_youdied_text at top with easeintop
         $ renpy.pause(4.0)
-        call dwtd_youdied("You didn't stop Reza from slapping the generator and blew up.")
+        call dwtd_youdied("Generator Slap","You didn't stop Reza from slapping the generator and blew up.")
     
     m "I grabbed Reza's wrist moments before his hand made contact with the generator."
     c "Maybe you shouldn't slap it like that, it might be fragile."
