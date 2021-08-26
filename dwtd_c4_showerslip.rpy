@@ -18,7 +18,7 @@ label dwtd_c4_showerslip:
         play sound "fx/impact3.ogg"
         scene black ((0, 0, 0, 0), 2.0, dist=50)
         $ renpy.pause (3.0)
-        call dwtd_deathsound(5)
+        $ dwtd.deathsound(5)
         show dwtd_youdied_text at top with easeintop
         $ renpy.pause (4.0)
         call dwtd_youdied("You cracked your skull open in the shower and died. {w}Think about how Adine feels...")

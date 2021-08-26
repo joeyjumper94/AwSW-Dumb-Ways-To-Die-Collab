@@ -100,7 +100,7 @@ label dwtd_c1_portalshootout:
 
         $ renpy.pause (0.5)
 
-        call dwtd_deathsound(5)
+        $ dwtd.deathsound(5)
         show dwtd_youdied_text at top with easeintop
         $ renpy.pause(4.0)
         
@@ -154,7 +154,7 @@ label dwtd_c1_portalshootout:
         hide starsr with dissolvemed
 
         $ renpy.pause (7.0)
-        call dwtd_deathsound(5)
+        $ dwtd.deathsound(5)
         show dwtd_youdied_text at top with easeintop
         $ renpy.pause(4.0)
         call dwtd_youdied("In your last moments, you learned what it was like to be torn apart alive.")
@@ -195,7 +195,7 @@ label dwtd_c1_portalshootout_2:
     scene np1 dwtd_explosion at Pan((50,0), (400,200), 10.0) with dissolveslow
     play soundloop "fx/fire2.ogg" fadein 2.0
     $ renpy.pause(7.0)
-    call dwtd_deathsound(5)
+    $ dwtd.deathsound(5)
     show dwtd_youdied_text at top with easeintop
     $ renpy.pause(4.0)
     call dwtd_youdied("I warned you about dead-end timelines. But did you listen? Oh no. You had to try to stop Reza with a generator sitting on the portal platform.")

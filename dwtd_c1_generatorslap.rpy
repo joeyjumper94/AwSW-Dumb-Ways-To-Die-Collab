@@ -24,7 +24,7 @@ label dwtd_c1_stopslap:
         $ renpy.pause (4.0)
         scene dwtdfirecafe with dissolveslow
         $ renpy.pause (2.0)
-        call dwtd_deathsound(5)
+        $ dwtd.deathsound(5)
         show dwtd_youdied_text at top with easeintop
         $ renpy.pause(4.0)
         call dwtd_youdied("You didn't stop Reza from slapping the generator and blew up.")
