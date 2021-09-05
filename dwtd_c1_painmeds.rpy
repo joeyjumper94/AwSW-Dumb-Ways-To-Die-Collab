@@ -1,5 +1,5 @@
 init:
-    find label menu5 as dwtd_c1_painmeds_check_in
+    find label menu5
     callto label dwtd_c1_painmeds_check
     find label medmenu
     search menu "Take some."
