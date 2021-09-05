@@ -1,15 +1,12 @@
 init:
     find label menu5 as dwtd_c1_painmeds_check_in
     callto label dwtd_c1_painmeds_check from dwtd_c1_painmeds_check_in return here
-    search menu
-    branch "Look in the bathroom."
-    search menu
-    branch "Look inside the cabinet."
-    search menu
+    find label medmenu
+    search menu "Take some."
     branch "Take some."
-    seach if
-    branch "medstaken == 2:"
-    seach say "(Can't hurt... because they're pain meds. Hehe.)"
+    search if "medstaken == 2"
+    branch "medstaken == 2"
+    search say "(Can't hurt... because they're pain meds. Hehe.)"
     callto label dwtd_c1_painmeds_death
 
 label dwtd_c1_painmeds_check:
@@ -35,7 +32,7 @@ label dwtd_c1_painmeds_check:
         
 
 label dwtd_c1_painmeds_death:
-    $ renpy.popcall()
+    $ renpy.pop_call()
     $ dwtd.will_die()
     play sound "fx/meds.wav"
     $ renpy.pause(1.5)

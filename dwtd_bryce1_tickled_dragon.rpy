@@ -32,8 +32,8 @@ label dwtd_draco_domiens_death:
     m "I couldn't breathe"
     Br stern "[player_name], are you ok?"
     Br sad "[player_name]."
-    #stuff from the death scene
-    $ dwtd.deathsound(2)
+    scene black with dissolveslow
+    $ dwtd.deathsound(5)
     show dwtd_youdied_text at top with easeintop
     $ renpy.pause(4.0)
     call dwtd_youdied("Draco Dormiens Nunquam Titillandus","Draco Dormiens Nunquam Titillandus\nIt is a Latin Phrase, it means Never Tickle a Sleeping Dragon.")

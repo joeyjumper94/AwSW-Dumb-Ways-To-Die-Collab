@@ -104,7 +104,7 @@ label dwtd_c1_portalshootout:
         show dwtd_youdied_text at top with easeintop
         $ renpy.pause(4.0)
         
-        call dwtd_youdied("Reza shot you for the one and only crime warranting immediate execution under your home city's laws: being a traitor. Maybe don't do that to him?")
+        call dwtd_youdied("Traitor","Reza shot you for the one and only crime warranting immediate execution under your home city's laws: being a traitor. Maybe don't do that to him?")
     else:
         play sound "fx/gunshot2.wav"
         $ renpy.pause(0.2)
@@ -157,7 +157,7 @@ label dwtd_c1_portalshootout:
         $ dwtd.deathsound(5)
         show dwtd_youdied_text at top with easeintop
         $ renpy.pause(4.0)
-        call dwtd_youdied("Suspect", "In your last moments, you learned what it was like to be torn apart alive.")
+        call dwtd_youdied("Suspect","In your last moments, you learned what it was like to be torn apart alive.")
 
 
 label dwtd_c1_portalshootout_2:
