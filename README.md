@@ -19,4 +19,4 @@ Publicly available core methods:
 + `dwtd.deathsound(sound_number,sound_playtime)` - Play a sound, often done while showing the "You Died" text, for tonal consistency.
     + `sound_number` - How many "booms" in the sound. No consistent direction.
     + `sound_playtime` - Fadeout time of the booms, as they're almost universally too long. It's recommended to follow this statement with `renpy.pause()` of equivalent time to let things really sink in for the player.
-+ `call dwtd_youdied("CAUSE OF DEATH")` - End of a death path. Displays `"CAUSE OF DEATH"` as read by system, then opens a menu screen to load, mainmenu, or quit.
++ `call dwtd_youdied("Name of death","CAUSE OF DEATH")` - End of a death path. Displays `"CAUSE OF DEATH"` as read by system, then opens a menu screen to load, mainmenu, or quit.
