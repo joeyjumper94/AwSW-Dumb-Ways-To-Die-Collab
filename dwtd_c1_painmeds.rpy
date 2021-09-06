@@ -1,15 +1,12 @@
 init:
-    find label menu5 as dwtd_c1_painmeds_check_in
-    callto label dwtd_c1_painmeds_check from dwtd_c1_painmeds_check_in return here
-    search menu
-    branch "Look in the bathroom."
-    search menu
-    branch "Look inside the cabinet."
-    search menu
+    find label menu5
+    callto label dwtd_c1_painmeds_check
+    find label medmenu
+    search menu "Take some."
     branch "Take some."
-    seach if
-    branch "medstaken == 2:"
-    seach say "(Can't hurt... because they're pain meds. Hehe.)"
+    search if "medstaken == 2"
+    branch "medstaken == 2"
+    search say "(Can't hurt... because they're pain meds. Hehe.)"
     callto label dwtd_c1_painmeds_death
 
 label dwtd_c1_painmeds_check:
@@ -35,7 +32,7 @@ label dwtd_c1_painmeds_check:
         
 
 label dwtd_c1_painmeds_death:
-    $ renpy.popcall()
+    $ renpy.pop_call()
     $ dwtd.will_die()
     play sound "fx/meds.wav"
     $ renpy.pause(1.5)
@@ -56,11 +53,11 @@ label dwtd_c1_painmeds_death:
         call syscheck from _call_syscheck_dwtd_c1_painmeds
         play sound "fx/system.wav"
         if system == "normal":
-            s "You took a dragon's dose pain medication. This was not a good idea."
+            s "You took a dragon's dose pain medication and died. This was not a good idea."
         elif system == "advanced":
-            s "You took a dragon's dose pain medication. You should probably have known that was a bad idea."
+            s "You took a dragon's dose pain medication and died. You should probably have known that was a bad idea."
         else:
-            s "You took a dragon's dose pain medication. Possibly the stupidest thing I've seen you do... yet."
+            s "You took a dragon's dose pain medication and died. Possibly the stupidest thing I've seen you do... yet."
     $ dwtd.deathsound(2)
     show dwtd_youdied_text at top with easeintop
     $ renpy.pause(4.0)

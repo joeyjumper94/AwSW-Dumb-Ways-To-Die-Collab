@@ -49,13 +49,15 @@ label dwtd_pissed_off_chief_menu:
             m "I suddenly realize I made a grave mistake.{w=0.5}{nw}"
             play sound2 "fx/slice.ogg"
             m "I felt a pain across my neck and chest"
+            show bryce stern b with dissolve
             queue sound2 "fx/impact.wav"
             m "I felt dizzy and collapsed."
+            show bryce sad b with dissolve
             scene black with dissolveslow
             #stuff from the death scene
             $ dwtd.deathsound(2)
             show dwtd_youdied_text at top with easeintop
             $ renpy.pause(4.0)
-            call dwtd_youdied("Pissed Off Chief","It is probably a bad idea to piss off someone who is twice your size")
+            call dwtd_youdied("Pissed Off Chief","It is probably a bad idea to piss off someone who is twice your size and has sharp claws")
 
 
