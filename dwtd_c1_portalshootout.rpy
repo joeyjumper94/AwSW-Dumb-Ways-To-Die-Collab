@@ -1,13 +1,18 @@
-init:
-    find label continuation
-    search menu "Well, you didn't make it easy."
-    search say "More than enough. I'm afraid this whole place will be gone soon. And we better not be here when it happens." as dwtd_c1_portalshootout_start
-    search menu
-    branch "Yeah, I know."
-    callto label dwtd_c1_portalshootout from dwtd_c1_portalshootout_start return here
+init python:
+    def dwtd_c1_portalshootout_link(ml):
+        ml.find_label('continuation') \
+            .search_menu("Well, you didn't make it easy.") \
+            .search_say("More than enough. I'm afraid this whole place will be gone soon. And we better not be here when it happens.") \
+            .hook_to('dwtd_c1_portalshootout',return_link=False) \
+            .search_menu("Yeah, I know.") \
+            .branch() \
+            .search_say("You do? Well, then you know what we've got to do, right?") \
+            .link_from('dwtd_c1_portalshootout_return') \
+            \
+            .search_show("reza gunpoint dk") \
+            .hook_call('dwtd_c1_portalshootout_2')
 
-    search show "reza gunpoint dk"
-    callto label dwtd_c1_portalshootout_2
+    dwtd_c1_portalshootout_link(magmalink())
 
 
 label dwtd_c1_portalshootout:
@@ -17,17 +22,13 @@ label dwtd_c1_portalshootout:
     else:
         menu:
             "Yeah, I know.":
-                return
+                jump dwtd_c1_portalshootout_return
             "What are you talking about?":
                 pass
             "Just spit it out already!":
                 pass
-    $ renpy.pop_call()
     $ dwtd.will_die()
     Rz "I hoped you'd see it too, but then it took me a while to understand, and I had a head start on you. In any case..."
-
-
-
 
     Rz "It's amazing to think it's even possible, but sad to know it won't last."
     c "What won't?"
