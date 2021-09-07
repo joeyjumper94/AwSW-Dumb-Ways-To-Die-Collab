@@ -1,8 +1,11 @@
-init:
-    find label seccont:
-        search say "Getting ready, I noticed something lying on the table. It was the note Remy had left for me in case I needed anything. Along with his own home phone and work number, there were also some numbers for delivery of food and other necessities, as well as emergency and even janitorial services. He had certainly thought of everything, even though I now had to wonder what a dragon plumber might look like." as dwtd_c1_dontslip_linknode
-        search python
-        callto label dwtd_c1_dontslip from dwtd_c1_dontslip_linknode return here
+init python:
+    def dwtd_c1_dontslip_link(ml):
+        ml.find_label('seccont') \
+            .search_say("Getting ready, I noticed something lying on the table. It was the note Remy had left for me in case I needed anything. Along with his own home phone and work number, there were also some numbers for delivery of food and other necessities, as well as emergency and even janitorial services. He had certainly thought of everything, even though I now had to wonder what a dragon plumber might look like.") \
+            .hook_to('dwtd_c1_dontslip',return_link=False) \
+            .search_python("renpy.pause (1.5)") \
+            .link_from('dwtd_c1_dontslip_return')
+    dwtd_c1_dontslip_link(magmalink())
 
 label dwtd_c1_dontslip:
     play sound "fx/door/doorbell.wav"
@@ -19,7 +22,6 @@ label dwtd_c1_dontslip:
         $ _return = False
     if not _return:
         $ dwtd.will_die()
-        $ renpy.pop_call()
         play sound "fx/impact3.ogg"
         scene black with None
         m "I tripped on my way to the door, falling hard and face-first onto the floor."
@@ -40,4 +42,4 @@ label dwtd_c1_dontslip:
     m "When I opened the door, I was met by another dragon."
     play sound "fx/door/handle.wav"
 
-    return
+    jump dwtd_c1_dontslip_return
