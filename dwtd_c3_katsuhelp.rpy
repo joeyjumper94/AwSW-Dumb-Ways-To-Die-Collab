@@ -1,12 +1,13 @@
-init:
-    find label c3arc
-    search if
-    branch "seenkatsu == False"
-    search menu
-    branch "Sure, I'll help you."
-    search say "Slowly, the cart started moving, and after a few seconds, it was freed from the perilous clutches of the muddy puddle."
-    callto label dwtd_c3_katsuhelp
-
+init python:
+    def dwtd_c3_katsuhelp_link(ml):
+        ml.find_label("c3arc") \
+            .search_if("seenkatsu == False") \
+            .branch() \
+            .search_menu("Sure, I'll help you.") \
+            .branch() \
+            .search_say("Slowly, the cart started moving, and after a few seconds, it was freed from the perilous clutches of the muddy puddle.") \
+            .hook_call("dwtd_c3_katsuhelp")
+    dwtd_c3_katsuhelp_link(magmalink())
 
 label dwtd_c3_katsuhelp:
     if not dwtd.check_keypoint():
