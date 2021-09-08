@@ -1,13 +1,26 @@
-init:
-    find label begingame
-    callto label dwtd_core_init_hardcore
+init python:
+    def dwtd_core_hardcore_link(ml):
+        ml.find_label('begingame') \
+            .hook_call('dwtd_core_init_hardcore')
+        
+        ml.find_label('skipintro') \
+            .search_if('persistent.endingsseen == 0') \
+            .branch_else() \
+            .search_python('c = DynamicCharacter (\"player_name\", color=playercolor, callback=rolly)') \
+            .hook_to('dwtd_core_init_hardcore')
 
-    find label skipintro
-    search if "persistent.endingsseen == 0"
-    branch else:
-        search python 'c = DynamicCharacter (\"player_name\", color=playercolor, callback=rolly)'
-        jumpto label dwtd_core_init_hardcore
-
+        # Initialize keypoints
+        ml.find_label('seccont') \
+            .hook_call('dwtd_set_keypoint_c1')
+        ml.find_label('chapter2') \
+            .hook_call('dwtd_set_keypoint_c2')
+        ml.find_label('chapter3') \
+            .hook_call('dwtd_set_keypoint_c3')
+        ml.find_label('chapter4') \
+            .hook_call('dwtd_set_keypoint_c4')
+        ml.find_label('chapter5') \
+            .hook_call('dwtd_set_keypoint_c5')
+    dwtd_core_hardcore_link(magmalink())
 
 label dwtd_core_init_hardcore:
     init python in dwtd:
@@ -35,6 +48,7 @@ label dwtd_core_init_hardcore:
                 return True
 
         def set_keypoint(ch):
+            print(ch)
             if hardcore:
                 if 1 <= ch <= 5:
                     if ch-1 == renpy.game.persistent.dwtd_keypoint:
@@ -140,15 +154,3 @@ label dwtd_set_keypoint_c5:
     python in dwtd:
         set_keypoint(5)
     return
-
-init:
-    find label seccont:
-        callto label dwtd_set_keypoint_c1
-    find label chapter2:
-        callto label dwtd_set_keypoint_c2
-    find label chapter3:
-        callto label dwtd_set_keypoint_c3
-    find label chapter4:
-        callto label dwtd_set_keypoint_c4
-    find label chapter5:
-        callto label dwtd_set_keypoint_c5
