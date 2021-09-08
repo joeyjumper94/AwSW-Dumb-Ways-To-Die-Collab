@@ -6,7 +6,7 @@ init python:
             .search_menu("Sure, I'll help you.") \
             .branch() \
             .search_say("Slowly, the cart started moving, and after a few seconds, it was freed from the perilous clutches of the muddy puddle.") \
-            .hook_call("dwtd_c3_katsuhelp")
+            .hook_call_to("dwtd_c3_katsuhelp")
     dwtd_c3_katsuhelp_link(magmalink())
 
 label dwtd_c3_katsuhelp:
