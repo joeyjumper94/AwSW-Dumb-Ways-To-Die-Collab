@@ -1,8 +1,9 @@
-init:
-    find label remy1:
-        search say "In any case, I'll be working on something else in the meantime, so let me know once you're done." as dwtd_r1_bookshelfcrush_linknode
-    find label remycont
-    callto label dwtd_r1_bookshelfcrush_start from dwtd_r1_bookshelfcrush_linknode return here
+init python:
+    def dwtd_remy1_fallingbooks_link(ml):
+        ml.find_label("remy1") \
+            .search_say("In any case, I'll be working on something else in the meantime, so let me know once you're done.") \
+            .hook_to("dwtd_r1_bookshelfcrush_start")
+    dwtd_remy1_fallingbooks_link(magmalink())        
 
 # Don't judge this code, okay?
 
@@ -75,7 +76,6 @@ label dwtd_r1_bookshelfcrush:
     
     $ dwtd_booksort_text = dwtd_booksort_status[dwtd_booksort_number]
     $ dwtd_booksort_answer = dwtd_booksort_correct[dwtd_booksort_number]
-    $ dwtd_booksort_number += 1
 
     if dwtd_booksort_number == dwtd_booksort_incident:
         $ renpy.music.set_pause(True, "music")
@@ -114,7 +114,8 @@ label dwtd_r1_bookshelfcrush:
 
     label dwtd_hint_return:
         pass
-
+        
+    $ dwtd_booksort_number += 1
     if dwtd_booksort_number <= 4:
         label dwtd_booksort_menu:
             menu:

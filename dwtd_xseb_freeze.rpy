@@ -1,21 +1,14 @@
-init:
-    find label sebastianskip
-
-    search menu "It's pretty cold."
-    branch "It's pretty cold.":
-        search say "I suppose it takes some getting used to." as dwtd_xseb_freeze_linknode # ideally I wish I could insert text directly after the menu, without replacing the menu option
-        search say "I could warm you up." 
-        callto label dwtd_xseb_freeze_complaint from dwtd_xseb_freeze_linknode return here
-
-        search menu "No, thank you."
-        change "No, thank you." to inaccessible
-        add option "No, thank you." to dwtd_xseb_freeze_rejection
-
-label dwtd_xseb_test:
-    m "Hello world!"
-
-    Sb "Hi."
-    return
+init python:
+    def dwtd_xseb_freeze_link(ml):
+        c = ml.find_label("sebastianskip") \
+            .search_menu()
+        c.branch("It's pretty cold.") \
+            .search_say("I supposed it takes some getting used to.") \
+            .hook_to("dwtd_xseb_freeze_complaint") \
+            .search_say("I could warm you up.") \
+            .link_from("dwtd_xseb_freeze_complaint_end")
+        c.branch("No, thank you") \
+            .edit_choice(jump="dwtd_xseb_freeze_rejection")
 
 label dwtd_xseb_freeze_complaint:
     c "It's freezing, actually. In town it wasn't this bad."
@@ -29,7 +22,7 @@ label dwtd_xseb_freeze_complaint:
     # menu:
     #     "I'll take it.": 
     #     "No, thank you.": 
-    return
+    jump dwtd_xseb_freeze_complaint_end
 
 
 label dwtd_xseb_freeze_rejection:

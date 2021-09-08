@@ -1,11 +1,14 @@
-init:
-    find label _call_skiptut_3:
-        search if 'food == "fish"'
-        search if 'food == "fish"'
-        branch 'food == "fish"':
-            search say "Not that this whole situation was already bizarre enough, there was also now the vague sense of danger conveyed by Reza's earlier words. I did not even have an idea what kind of threat might be lurking out there." as dwtd_c1_fishdeath_linknode
-        search say "Sure thing."
-        callto label dwtd_c1_fishdeath from dwtd_c1_fishdeath_linknode return here
+init python:
+    def dwtd_c1_fishdeath_link(ml):
+        ml.find_label("_call_skiptut_3") \
+            .search_if("food == \"fish\"") \
+            .search_if("food == \"fish\"") \
+            .branch("food == \"fish\"") \
+            .search_say("Not that this whole situation was already bizarre enough, there was also now the vague sense of danger conveyed by Reza's earlier words. I did not even have an idea what kind of threat might be lurking out there.") \
+            .hook_to("dwtd_c1_fishdeath") \
+            .search_say("Sure thing.") \
+            .link_from("dwtd_c1_fishdeath_end")
+    dwtd_c1_fishdeath_link(magmalink())
 
 label dwtd_c1_fishdeath:
     m "I looked back down to the fish on the plate in front of me."
@@ -13,7 +16,6 @@ label dwtd_c1_fishdeath:
     menu:
         "[[Take a bite.]":
             $ dwtd.will_die()
-            $ renpy.pop_call()
             m "I took a bite of my somewhat unusual breakfast. While I already thought the smell was quite peculiar, the taste had been even worse. I imagined it might be the kind of delicacy that had an acquired taste. One that I certainly hadn't acquired yet. I decided to get outside before it was too late."
             m "However, when getting up from the table, my legs became weak and my vision went blurry."
             stop music fadeout 2.0
@@ -40,4 +42,4 @@ label dwtd_c1_fishdeath:
     Sb "How'd you like it?"
     c "Well, I didn't actually try the fish."
     Sb "Trust me, you aren't the only one concerened by that dish."
-    return
+    jump dwtd_c1_fishdeath_end
