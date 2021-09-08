@@ -1,7 +1,7 @@
 init python:
     def dwtd_core_hardcore_link(ml):
         ml.find_label('begingame') \
-            .hook_call('dwtd_core_init_hardcore')
+            .hook_call_to('dwtd_core_init_hardcore')
         
         ml.find_label('skipintro') \
             .search_if('persistent.endingsseen == 0') \
@@ -11,15 +11,15 @@ init python:
 
         # Initialize keypoints
         ml.find_label('seccont') \
-            .hook_call('dwtd_set_keypoint_c1')
+            .hook_call_to('dwtd_set_keypoint_c1')
         ml.find_label('chapter2') \
-            .hook_call('dwtd_set_keypoint_c2')
+            .hook_call_to('dwtd_set_keypoint_c2')
         ml.find_label('chapter3') \
-            .hook_call('dwtd_set_keypoint_c3')
+            .hook_call_to('dwtd_set_keypoint_c3')
         ml.find_label('chapter4') \
-            .hook_call('dwtd_set_keypoint_c4')
+            .hook_call_to('dwtd_set_keypoint_c4')
         ml.find_label('chapter5') \
-            .hook_call('dwtd_set_keypoint_c5')
+            .hook_call_to('dwtd_set_keypoint_c5')
     dwtd_core_hardcore_link(magmalink())
 
 label dwtd_core_init_hardcore:

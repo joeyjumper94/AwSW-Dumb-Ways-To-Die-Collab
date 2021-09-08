@@ -1,15 +1,15 @@
 init python:
     def dwtd_bryce1_alcoholpoison_link(ml):
         ml.find_label('bryce1') \
-            .hook_call('dwtd_bryce1_alcoholpoison_init') \
+            .hook_call_to('dwtd_bryce1_alcoholpoison_init') \
             .search_menu("I don't usually drink, though.") \
             .branch() \
             .search_say("That's fine, you don't have to.") \
-            .hook_call('dwtd_bryce1_alcoholpoison_deny') \
+            .hook_call_to('dwtd_bryce1_alcoholpoison_deny') \
 
         nothingyet = ml.find_label('waitmenu') \
             .search_say("Noted. I'll be right back.") \
-            .hook_call('dwtd_bryce1_alcoholpoison_deny',condition="beer == False") \
+            .hook_call_to('dwtd_bryce1_alcoholpoison_deny',condition="beer == False") \
             .search_if("beer == False")
         nothingyet.branch() \
             .search_menu("Not really. I guess I can stay for a little while.") \
@@ -17,32 +17,32 @@ init python:
             .search_menu("I don't really drink, though.") \
             .branch() \
             .search_show("bryce laugh") \
-            .hook_call('dwtd_bryce1_alcoholpoison_deny')
+            .hook_call_to('dwtd_bryce1_alcoholpoison_deny')
 
         cantbeat = nothingyet.search_menu("I would, but I don't think I can beat someone like you.")
         cantbeat.branch() \
             .search_say("How about a handicap, then? I'll go easy on you.") \
-            .hook_call('dwtd_bryce1_alcoholpoison_deny')
+            .hook_call_to('dwtd_bryce1_alcoholpoison_deny')
 
         easyenough = cantbeat.search_menu("That sounds easy enough.")
         easyenough.branch() \
             .search_python("renpy.pause (0.5)") \
-            .hook_call('dwtd_bryce1_alcoholpoison_deny')
+            .hook_call_to('dwtd_bryce1_alcoholpoison_deny')
 
         buzz = easyenough.search_menu("Alright, it's a buzz.")
         buzz.branch() \
             .search_python("renpy.pause (0.5)") \
-            .hook_call('dwtd_bryce1_alcoholpoison_deny')
+            .hook_call_to('dwtd_bryce1_alcoholpoison_deny')
 
         underestimated = buzz.search_menu("I may have underestimated this...")
         underestimated.branch() \
             .search_say("You can always give up.") \
-            .hook_call('dwtd_bryce1_alcoholpoison_deny')
+            .hook_call_to('dwtd_bryce1_alcoholpoison_deny')
 
         mightaswell = underestimated.search_menu("M-Might as well do that now...")
         mightaswell.branch() \
             .search_python("renpy.pause (0.5)") \
-            .hook_call('dwtd_bryce1_alcoholpoison_deny')
+            .hook_call_to('dwtd_bryce1_alcoholpoison_deny')
 
         mightaswell.search_say("Hey, are you okay? You fell down, and you look kinda messed up.") \
             .hook_to('dwtd_bryce1_alcoholpoison_end',condition="dwtd.bryce1_alcoholpoisoning >= 4")
