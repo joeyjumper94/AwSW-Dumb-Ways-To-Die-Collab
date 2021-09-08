@@ -10,7 +10,7 @@ init python:
             .link_from('dwtd_c1_portalshootout_return') \
             \
             .search_show("reza gunpoint dk") \
-            .hook_call('dwtd_c1_portalshootout_2')
+            .hook_call_to('dwtd_c1_portalshootout_2')
 
     dwtd_c1_portalshootout_link(magmalink())
 
