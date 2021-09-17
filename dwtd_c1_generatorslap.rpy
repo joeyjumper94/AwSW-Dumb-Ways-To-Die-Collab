@@ -1,8 +1,11 @@
-init:
-    find label _call_skiptut_3:
-        search say "Shh, be quiet. I'll let you know more as soon as I can. But for now, let's just play along. After all, we already have one of these babies." as dwtd_c1_stopslap_linknode
-        search say "God knows we need them."
-        callto label dwtd_c1_stopslap from dwtd_c1_stopslap_linknode return here
+init python:
+    def dwtd_c1_generatorslap_link(ml):
+        ml.find_label("_call_skiptut_3") \
+            .search_say("Shh, be quiet. I'll let you know more as soon as I can. But for now, let's just play along. After all, we already have one of these babies.") \
+            .hook_to("dwtd_c1_stopslap") \
+            .search_say("God knows we need them.") \
+            .link_from("dwtd_c1_stopslap_end")
+    dwtd_c1_generatorslap_link(magmalink())
 
 label dwtd_c1_stopslap:
     m "Reza lifted his hand, seemingly to give the generator a light pat."
@@ -15,7 +18,6 @@ label dwtd_c1_stopslap:
         $ _return = False
     if not _return:
         $ dwtd.will_die()
-        $ renpy.pop_call()
         stop music fadeout 1.0
         play sound "fx/beeps2.ogg"
         $ renpy.pause (0.3)
@@ -37,4 +39,4 @@ label dwtd_c1_stopslap:
         show reza normal with dissolve
     else:
         Rz "Good idea."
-    return
+    jump dwtd_c1_stopslap_end

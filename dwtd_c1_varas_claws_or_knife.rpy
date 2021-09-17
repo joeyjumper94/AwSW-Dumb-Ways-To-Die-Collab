@@ -1,13 +1,18 @@
 
-init:
-    find say "Reza didn't seem to share the same interest and instead was more smitten with the generator, but given our reasons for coming here in the first place, I couldn't blame him for his enthusiasm being focused on something else." as dwtd_c1_vara_death_linknode
-    search say "I gave her a generous tip on your behalf. I hope you don't mind."
-    callto label dwtd_c1_vara_death from dwtd_c1_vara_death_linknode return here
+init python:
+    def dwtd_c1_vara_death_link(ml):
+        ml.find_label("seccont") \
+            .search_say("Reza didn't seem to share the same interest and instead was more smitten with the generator, but given our reasons for coming here in the first place, I couldn't blame him for his enthusiasm being focused on something else.", 800) \
+            .hook_to("dwtd_c1_vara_death") \
+            .search_say("I gave her a generous tip on your behalf. I hope you don't mind.") \
+            .link_from("dwtd_c1_vara_death_end")
+    dwtd_c1_vara_death_link(magmalink())
+    
         
 label dwtd_c1_vara_death:
     stop music fadeout 1.0
     window hide
-    if renpy.random.randint(0,1)==1:
+    if renpy.random.randint(0,1) == 1:
         #Created by Eval
         nvl clear
         m "My thoughts were interrupted as something started running in my direction."
@@ -69,7 +74,7 @@ label dwtd_c1_vara_death:
         else:
             play sound "fx/system3.wav"
             s "Looks like this \"Hardcore\" timeline is broken. you will never see her coming."
-            $ _return=False
+            $ _return = False
         if not _return:
             $ dwtd.will_die()
             play sound "fx/slice.ogg"
@@ -93,4 +98,4 @@ label dwtd_c1_vara_death:
     m "Shortly afterwards, Sebastian joined me outside, having taken care of the tab."
     show sebastian normal b with dissolve
     play music "mx/sail.ogg" fadein 1.0
-    return
+    jump dwtd_c1_vara_death_end
