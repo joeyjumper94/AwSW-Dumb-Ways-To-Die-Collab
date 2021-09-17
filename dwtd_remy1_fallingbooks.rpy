@@ -112,10 +112,10 @@ label dwtd_r1_bookshelfcrush:
         hide remy with easeoutright
         $ renpy.music.set_pause(False, "music")
 
+    $ dwtd_booksort_number += 1
     label dwtd_hint_return:
         pass
         
-    $ dwtd_booksort_number += 1
     if dwtd_booksort_number <= 4:
         label dwtd_booksort_menu:
             menu:
