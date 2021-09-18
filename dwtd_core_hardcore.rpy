@@ -36,7 +36,17 @@ label dwtd_core_init_hardcore:
             else:
                 return 1
 
-        def check_keypoint():
+        def check_keypoint(dev = False):
+            if dev:
+                renpy.say(None, "Welcome to the dev menu. How would you like this death to proceed?", interact=False)
+                renpy.ast.say_menu_with(None, renpy.game.interface.set_transition)
+                opts = [
+                    ("Correct Hardcore save file", True),
+                    ("Broken Hardcore save file", False),
+                    ("Normal save file", True)
+                ]
+                return renpy.display_menu(opts)
+
             if hardcore:
                 kpt = get_chapter()
                 if not (1 <= kpt <= 5):
