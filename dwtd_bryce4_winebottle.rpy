@@ -31,7 +31,7 @@ label dwtd_bryce4_winebottledodge:
         scene black with Shake ((0, 0, 0, 0), 2.0, dist=10)
         play sound "fx/impact3.ogg"
         $ renpy.pause(2.0)
-        m "The bottle struck me on the head, shattering instantly.{w} The sharpnel wedged itself deep into my skin, tearing right into my skull."
+        m "The bottle struck me on the head, shattering instantly.{w=0.5} The sharpnel wedged itself deep into my skin, tearing right into my skull."
         m "{cps=12}That was{/cps}{w=0.5} {cps=10}the last thing I...{/cps}"
         $ renpy.pause (2.0)
         Br sad "{cps=5}...{/cps}"
@@ -56,7 +56,7 @@ label dwtd_bryce4_winebottledodge:
     m "I glanced to where the bottle had shattered and flinched at the shards scattered about. If I didn't get out of the way..."
     c "..."
     c "Why did you do that, Bryce?"
-    Br sad "...{w}Sorry.{w} I lost control."
+    Br sad "...{w=0.5}Sorry.{w=0.5} I lost control."
     m "He let out a loud sigh, the guilt on his face apparent."
     play music "mx/shoal.ogg" fadein 2.0
 
