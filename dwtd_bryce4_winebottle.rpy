@@ -1,7 +1,7 @@
 init python:
-    def dwtd_bryce4_winebottle_link(ml):
-        ml.find_label('bryce4') \
-            .search_say("You don't need to apologize for anything.", 400) \
+    def dwtd_bryce4_crash_landing_link(ml):
+        ml.find_label('mpsave') \
+            .search_say("Her speed quickly increased while she moved towards the water. Then, she did a roll, and another, followed by the third. Dangerously close to the water's surface, she suddenly pulled up, but as she did so, one of her feet went below the surface, where it apparently caught onto something, causing her to spin out of control.", 400) \
             .hook_to("dwtd_bryce4_winebottledodge") \
             .search_say("Do you think it's easy for me? Seeing so many people die on my watch?", 500) \
             .link_from("dwtd_bryce4_winebottledodge_end")
@@ -32,10 +32,10 @@ label dwtd_bryce4_winebottledodge:
         play sound "fx/impact3.ogg"
         $ renpy.pause(2.0)
         m "The bottle struck me on the head, shattering instantly.{w} The sharpnel wedged itself deep into my skin, tearing right into my skull."
-        m "{cps=12}That was{/cps}{w} {cps=10}the last thing I...{/cps}"
+        m "{cps=12}That was{/cps}{w=0.5} {cps=10}the last thing I...{/cps}"
         $ renpy.pause (2.0)
         Br sad "{cps=5}...{/cps}"
-        Br sad "{cps=8}Dammit...{/cps}"
+        Br sad "{cps=12}Dammit...{/cps}"
         $ renpy.pause (0.8)
         $ dwtd.deathsound(5)
         show dwtd_youdied_text at top with easeintop
@@ -56,7 +56,7 @@ label dwtd_bryce4_winebottledodge:
     m "I glanced to where the bottle had shattered and flinched at the shards scattered about. If I didn't get out of the way..."
     c "..."
     c "Why did you do that, Bryce?"
-    Br sad "...{w}Sorry.{w} I lost control."
+    Br sad "...{w=0.5}Sorry.{w=0.5} I lost control."
     m "He let out a loud sigh, the guilt on his face apparent."
     play music "mx/shoal.ogg" fadein 2.0
 
