@@ -1,13 +1,17 @@
-init:
-    find label menu5
-    callto label dwtd_c1_painmeds_check
-    find label medmenu
-    search menu "Take some."
-    branch "Take some."
-    search if "medstaken == 2"
-    branch "medstaken == 2"
-    search say "(Can't hurt... because they're pain meds. Hehe.)"
-    callto label dwtd_c1_painmeds_death
+init python:
+    def dwtd_c1_painmeds_link(ml):
+        (ml.find_label('menu5')
+            .hook_call_to('dwtd_c1_painmeds_check')
+        )
+        (ml.find_label('medmenu')
+            .search_menu()
+            .branch('Take some.')
+            .search_if('medstaken == 2')
+            .branch()
+            .search_say("(Can't hurt... because they're pain meds. Hehe.)")
+            .hook_to('dwtd_c1_painmeds_death')
+        )
+    dwtd_c1_painmeds_link(magmalink())
 
 label dwtd_c1_painmeds_check:
     if not dwtd.check_keypoint():
@@ -27,12 +31,10 @@ label dwtd_c1_painmeds_check:
         c "(I suppose one more can't hurt.){w=1.0}{nw}"
         c "(Can't hurt... because they're pain meds. Hehe.){w=1.0}{nw}"
         jump dwtd_c1_painmeds_death
-    else:
-        return
+    return
         
 
 label dwtd_c1_painmeds_death:
-    $ renpy.pop_call()
     $ dwtd.will_die()
     play sound "fx/meds.wav"
     $ renpy.pause(1.5)
