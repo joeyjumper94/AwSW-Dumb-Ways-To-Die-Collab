@@ -62,7 +62,7 @@ label dwtd_c1_suicide_menu1:
             Br "I'm saying your theory needs work to be remotely plausible."
             $ wrong2 = False
             jump dwtd_c1_suicide_menu1
-        "Religion":
+        "Religion.":
             pass
     c "Think about the situation this poor guy's in. Humans have just shown up in his world. Your people worship us, right?"
     Br brow b "More or less."
@@ -105,4 +105,59 @@ label dwtd_c1_suicide_menu2:
     $ renpy.pause (2.0)
     show adine think b flip at left with easeinleft
     m "Adine landed, knife gripped by one of her feet.{w=0.6} Before she passed it to what could be described as a hand for her, I spoke up."
-    c "Actually, could you show us slashing at your wing with that knife?"
+    c "Actually, could you show us slashing at your own wing with that knife? Held with your foot?"
+    show bryce brow b
+    show adine sad b flip
+    with dissolve
+    Ad "W- What?"
+    show adine at Position(xanchor='center',xpos=0.0) with ease
+    m "Adine backed away a few steps, leaving the knife on the ground."
+    Br stern b "Okay, that's enough, [player_name]. You can't ask her to risk hurting herself to prove your point."
+    Br brow b "Besides. Now that you explain it that way, we'd expect to find blood on the victim's feet. We don't."
+    c "No, no. You saw how little blood there was in the wing cuts. Here."
+    m "I began balancing on one foot, struggling to take off my shoe and expose my other foot."
+    Br stern b "Careful!"
+    m "Reaching over with my bare foot, I picked up the knife by the handle between my big and index toes."
+    c "We can already see fliers have no problem picking up and manipulating things with their feet, right? Even flying and landing with objects held."
+    m "I stuck my arm out like a sheet hung from it, pretending it was a wing. Then, I lifted my leg to swipe the knife through the imaginary wing membrane. The knife skittered from between my toes when I stumbled to catch my balance, but my point had been made."
+    c "My legs are {i}less{/i} articulate than a flier's. And {i}I{/i} could replicate that damage, if I had wings."
+    Ad think b flip "{size=-8}What are you even talking about? Why would someone do that?{/size}"
+    Br brow b "And the chest and kneck injuries?"
+    m "I held up three fingers on one hand, folding in my thumb and pinkie."
+    c "Roughly equivalent to a flier hand, right?"
+    m "Picking up the knife between my index and middle fingers, I twisted my hand, flicking the handle against my palm until I had it gripped around the right way."
+    c "And then,"
+    m "I swiped the blade of the knife in the space over my chest."
+    c "Q.E.D."
+    show adine sad b flip with dissolve
+    $ renpy.pause(0.8)
+    Ad disappoint b flip "Um."
+    $ renpy.pause(0.5)
+    Ad think b flip "You can't make those motions with wings. Your elbow was out too far."
+    m "I stared at her."
+    Ad sad b flip "You can't get further than... this?"
+    c "Oh, so lower."
+    show adine think b flip with dissolve
+    m "I repeated the chest slashing motions, now from the lower angle."
+    show bryce stern b with dissolve
+    m "Bryce shook his head."
+    Br "That doesn't work. Now the angle of the cuts are too low, and you can't reach your neck."
+    c "Yes I can. If I tug in my shoulder like thi--"
+    play sound "fx/slice.ogg"
+    show adine sad b flip
+    show bryce angry b
+    with fadequick
+    $ renpy.pause(0.5)
+    c "Urk"
+    Br "[player_name]!"
+    show bryce stern b at center
+    show adine think b
+    with fadequick
+    Br "Just don't--"
+    scene black with dissolve
+    play sound "fx/impact3.ogg"
+    $ renpy.pause(2.0)
+    $ dwtd.deathsound(5)
+    show dwtd_youdied_text at top with easeintop
+    $ renpy.pause(4.0)
+    call dwtd_youdied("Clearly Suicide","That was a very direct demonstration you gave.")
