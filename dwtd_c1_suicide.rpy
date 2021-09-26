@@ -122,7 +122,7 @@ label dwtd_c1_suicide_menu2:
     m "I stuck my arm out like a sheet hung from it, pretending it was a wing. Then, I lifted my leg to swipe the knife through the imaginary wing membrane. The knife skittered from between my toes when I stumbled to catch my balance, but my point had been made."
     c "My legs are {i}less{/i} articulate than a flier's. And {i}I{/i} could replicate that damage, if I had wings."
     Ad think b flip "{size=-8}What are you even talking about? Why would someone do that?{/size}"
-    Br brow b "And the chest and kneck injuries?"
+    Br brow b "And the chest and neck injuries?"
     m "I held up three fingers on one hand, folding in my thumb and pinkie."
     c "Roughly equivalent to a flier hand, right?"
     m "Picking up the knife between my index and middle fingers, I twisted my hand, flicking the handle against my palm until I had it gripped around the right way."
