@@ -1,7 +1,7 @@
 init python:
     def dwtd_c1_suicide_link(ml):
         for l in ['quest2','quest3','quest5']:
-            ml.find_label(l).hook_to('dwtd_c1_suicide',condition='suicide >= 1')
+            ml.find_label(l).hook_to('dwtd_c1_suicide',condition='suicide >= 2',return_link=False)
     dwtd_c1_suicide_link(magmalink())
 
 label dwtd_c1_suicide:
@@ -42,10 +42,11 @@ label dwtd_c1_suicide:
     show bryce brow b with easeinright
     Br stern b "This had better be good."
     c "Oh, it will be."
+    Br brow b "How about you start explaining the reasoning here. Why did he commit suicide?"
 
 label dwtd_c1_suicide_menu1:
     menu:
-        c "He commit suicide because..."
+        c "Because..."
         "Gum disease." if wrong1:
             c "It was a suicide over his gum disease medical bills. You saw all the blood on his muzzle earlier, around his mouth."
             Br brow b "What kind of world do you live in where that makes sense?"
@@ -53,7 +54,7 @@ label dwtd_c1_suicide_menu1:
             Br stern b "That was rhetorical. Our world isn't like that."
             $ wrong1 = False
             jump dwtd_c1_suicide_menu1
-        "Stress.":
+        "Stress." if wrong2:
             c "He was probably under a lot of stress from his job. Flying everywhere at all hours of the day?"
             Br brow b "That's what fliers do."
             Br stern b "Very few of them commit suicide over it. Fewer still do so in rural environments like this."
@@ -65,14 +66,14 @@ label dwtd_c1_suicide_menu1:
             pass
     c "Think about the situation this poor guy's in. Humans have just shown up in his world. Your people worship us, right?"
     Br brow b "More or less."
-    c "So he's looking at our arrival like some kind of second coming. Now the cuts on his wings -- they're vertical, through the membrane, along the spines. That looks painful. Why?"
+    c "So he's looking at our arrival like some kind of messianic arrival or apocalyptic omen. Now the cuts on his wings -- they're vertical, through the membrane, along the spines. That looks painful. Why?"
     Br stern b "He was defending himself from someone slashing at him."
     # c "That's right. He's been attacked by someone." # That's true Copilot, but not what the player character is saying here.
     c "No, no, no. All the cuts are {i}with the spines.{/i}{w=0.5} I think it was something ritualistic."
     Br brow b "Ritualistic suicide?"
-    Br stern b "He did it in the middle of the street, sometime after midnight. What circumstances would lead to his ritual occurring here? Assuming that's even what this is."
+    Br stern b "He did it in the middle of the street, some time well after midnight. What circumstances would lead to his ritual occurring here? Assuming that's even what this is."
 
-label dwtd_c1_suicide_menu2
+label dwtd_c1_suicide_menu2:
     menu:
         c "He killed himself here because..."
         "Nothing." if wrong3:
@@ -99,6 +100,7 @@ label dwtd_c1_suicide_menu2
     Br stern b "{i}If{/i} the victim here could make the motions you're implying he made with the knife."
     c "If he attacked Reza, then Reza is the victim."
     Br "Let's not confuse terminology now."
+    show bryce at right with ease
     play sound "fx/landing.ogg"
     $ renpy.pause (2.0)
     show adine think b flip at left with easeinleft
