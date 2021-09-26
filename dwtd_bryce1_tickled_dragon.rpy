@@ -1,9 +1,12 @@
-init:
-    find say "(Guess I must have passed out after I got Bryce home.)"
-    callto label dwtd_draco_domiens_check
-
-    search menu "Wake up, fattie."
-    add option "[[tickle him]" to dwtd_draco_domiens_death
+init python:
+    def dwtd_draco_domiens_link(ml):
+        (ml.find_label('bryce1')
+            .search_say("(Guess I must have passed out after I got Bryce home.)", depth = 1000)
+            .hook_call_to('dwtd_draco_domiens_check')
+            .search_menu()
+            .add_choice('[[Tickle him.]', jump = 'dwtd_draco_domiens_death')
+        )
+    dwtd_draco_domiens_link(magmalink())
 
 label dwtd_draco_domiens_check:
     if not dwtd.check_keypoint():
@@ -12,8 +15,7 @@ label dwtd_draco_domiens_check:
         $ renpy.pop_call()
         c "Hey, Bryce."
         jump dwtd_draco_domiens_death
-    else:
-        return
+    return
 
 label dwtd_draco_domiens_death:
     $ dwtd.will_die()

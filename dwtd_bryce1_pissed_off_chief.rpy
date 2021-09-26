@@ -1,16 +1,18 @@
-init:
-    find label bryce1
-    search say "You know, I'm just about done here for the day, but if you want to discuss it over a beer or something, I'd be more than happy." as dwtd_pissed_off_chief_check_in
-    search menu "I don't usually drink, though." as dwtd_pissed_off_chief_check_out
-    callto label dwtd_pissed_off_chief_check from dwtd_pissed_off_chief_check_in return dwtd_pissed_off_chief_check_out
-    branch "I don't usually drink, though."
-    search menu "[[press him about wanting to go to a bar.]"
-    branch "[[press him about wanting to go to a bar.]"
-    search menu "It can't be that hard."
-    branch "It can't be that hard."
-    search say "Alright, kiddo, that's enough. You better go now before you make me really mad." as dwtd_pissed_off_chief_menu_in
-    search say "I might not be the wisest person that ever lived, but if I knew one thing, it was that getting on a dragon's bad side was not a very good idea." as dwtd_pissed_off_chief_menu_out
-    callto label dwtd_pissed_off_chief_menu from dwtd_pissed_off_chief_menu_in return dwtd_pissed_off_chief_menu_out
+init python:
+    def dwtd_pissed_off_chief_link(ml):
+        (ml.find_label('bryce1')
+            .search_say("You know, I'm just about done here for the day, but if you want to discuss it over a beer or something, I'd be more than happy.")
+            .hook_call_to("dwtd_pissed_off_chief_check")
+            .search_menu()
+            .branch("I don't usually drink, though.")
+            .search_menu()
+            .branch("[[press him about wanting to go to a bar.]")
+            .search_menu()
+            .branch("It can't be that hard.")
+            .search_say("Alright, kiddo, that's enough. You better go now before you make me really mad.")
+            .hook_call_to("dwtd_pissed_off_chief_menu")
+        )
+    dwtd_pissed_off_chief_link(magmalink())
 
 label dwtd_pissed_off_chief_check:
     if not dwtd.check_keypoint():
@@ -28,16 +30,11 @@ label dwtd_pissed_off_chief_check:
         show bryce stern b with dissolve
         Br "Alright, kiddo, that's enough. You better go now before you make me really mad."
         jump dwtd_pissed_off_chief_death
-    else:
-        $ brycemood = 0
-        return
+    return
 
 label dwtd_pissed_off_chief_menu:
     menu:
         "[[leave]":
-            stop music fadeout 1.0
-            scene black with fade
-            nvl clear
             return
         "[[make fun of him]":
             label dwtd_pissed_off_chief_death:
