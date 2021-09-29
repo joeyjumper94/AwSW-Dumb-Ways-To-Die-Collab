@@ -2,7 +2,78 @@ init python:
     def dwtd_c1_suicide_link(ml):
         for l in ['quest2','quest3','quest5']:
             ml.find_label(l).hook_to('dwtd_c1_suicide',condition='suicide >= 2',return_link=False)
+        
+        ml.find_label('quest1') \
+            .hook_to('dwtd_c1_suicide_quest1_check')
+
+        ml.find_label('quest2') \
+            .hook_to('dwtd_c1_suicide_quest2_suicideforcecheck') \
+            .search_menu("It tells us that it was suicide.") \
+            .branch() \
+            .search_if() \
+            .link_from('dwtd_c1_suicide_quest2_suicideforcecheck_failed')
+        
+        ml.find_label('quest3') \
+            .hook_to('dwtd_c1_suicide_quest3_suicideforcecheck') \
+            .search_menu("He wouldn't, because this was clearly a suicide.") \
+            .branch() \
+            .search_if() \
+            .link_from('dwtd_c1_suicide_quest3_suicideforcecheck_failed')
+        
+        ml.find_label('quest5') \
+            .hook_to('dwtd_c1_suicide_quest5_suicideforcecheck') \
+            .search_menu("He committed suicide.") \
+            .branch() \
+            .search_if() \
+            .link_from('dwtd_c1_suicide_quest5_suicideforcecheck_failed')
+
     dwtd_c1_suicide_link(magmalink())
+
+label dwtd_c1_suicide_quest1_check:
+    if dwtd.check_keypoint():
+        jump dwtd_c1_suicide_quest1_check_return
+    play sound "fx/system3.wav"
+    s "You can't reload to fix a \"Hardcore\" timeline. You have far too overactive an imagination."
+    if wrong3:
+        c "Based on the number and shape of the wounds, I'd say it was a suicide."
+        Br "No way."
+        python:
+            answers -= 2
+            suicide += 1
+            wrong3 = False
+    c "They are clean cuts, like from a knife or another sharp instrument."
+    Br "That is true, but why does this matter?"
+    c "It tells us that it was a suicide."
+    Br "I thought we ruled that one out already."
+    jump dwtd_c1_suicide
+
+label dwtd_c1_suicide_quest2_suicideforcecheck:
+    if dwtd.check_keypoint() or not wrong6:
+        jump dwtd_c1_suicide_quest2_suicideforcecheck_return
+    play sound "fx/system3.wav"
+    s "You can't reload to fix a \"Hardcore\" timeline. You have far too overactive an imagination."
+    c "It tells us that it was suicide."
+    jump dwtd_c1_suicide_quest2_suicideforcecheck_failed
+
+label dwtd_c1_suicide_quest3_suicideforcecheck:
+    if dwtd.check_keypoint() or not wrong10:
+        jump dwtd_c1_suicide_quest3_suicideforcecheck_return
+    play sound "fx/system3.wav"
+    s "You can't reload to fix a \"Hardcore\" timeline. You have far too overactive an imagination."
+    c "He wouldn't, because this was clearly a suicide."
+    jump dwtd_c1_suicide_quest3_suicideforcecheck_failed
+
+label dwtd_c1_suicide_quest5_suicideforcecheck:
+    if dwtd.check_keypoint() or not wrong18:
+        jump dwtd_c1_suicide_quest5_suicideforcecheck_return
+    play sound "fx/system3.wav"
+    s "You can't reload to fix a \"Hardcore\" timeline. You have far too overactive an imagination."
+    c "He committed suicide."
+    jump dwtd_c1_suicide_quest5_suicideforcecheck_failed
+
+    
+
+
 
 label dwtd_c1_suicide:
     python:
