@@ -28,7 +28,6 @@ label dwtd_c1_vara_death:
             $ _return = False
         if not _return:
             $ dwtd.will_die()
-            $ renpy.pop_call()
             stop music fadeout 1.0
             play sound "fx/slice.ogg"
             $ renpy.pause (1.0)
@@ -53,7 +52,6 @@ label dwtd_c1_vara_death:
             $ _return = True
         if _return:
             $ dwtd.will_die()
-            $ renpy.pop_call()
             stop music fadeout 1.0
             m "I attempted to shift my body weight to regain my footing. However, I was only able to change the direction in which I fell."
             m "As I was falling, I noticed the sheen of the knife's blade as it made it's way closer to my neck."

@@ -121,7 +121,7 @@ label dwtd_c1_portalshootout:
 
         show maverick rage flip dk:
             ease 0.8 zoom 1.5 xpos 0.0
-        play sound "fx/whooshimpact.wav"
+        play sound "fx/wooshimpact.wav"
         $ renpy.pause(0.8)
         play sound "fx/bite.ogg"
         scene black with hpunch

@@ -19,12 +19,37 @@ label dwtd_c1_stopslap:
     if not _return:
         $ dwtd.will_die()
         stop music fadeout 1.0
-        play sound "fx/beeps2.ogg"
-        $ renpy.pause (0.3)
-        play sound "fx/explosion.ogg"
-        scene black with Shake ((0, 0, 0, 0), 3.0, dist=50)
-        $ renpy.pause (4.0)
-        scene dwtdfirecafe with dissolveslow
+        if renpy.random.randint(0,1)==1:
+            play sound2 "fx/box1.wav"
+            play sound "fx/hiss.ogg"
+            queue sound "fx/hiss.ogg"
+            m "Reza's slap sent the generator tumbling to the floor.\nImmediately, a hissing could be heard from it."
+            c "Nice going Reza, you broke it."
+            Rz annoyed "How was I supposed to know that it was that fragile?"
+            c "weren't you paying attention when Anna gave us that generator said to be careful with it?"
+            play sound2 "fx/chair.wav"
+            queue sound2 "fx/chair.wav"
+            play sound "fx/silence.ogg"
+            queue sound "fx/silence.ogg"
+            queue sound "fx/silence.ogg"
+            queue sound "fx/chair.wav"
+            m "suddenly, everyone was scrambling for the exit"
+            Sb drop b "Reza, [player_name], we need to get out of here before the gen-{w=1.0}{nw}"
+            play sound "fx/explosion.ogg"
+            scene dwtdfirecafe
+            show reza angry b
+            with Shake ((0, 0, 0, 0), 1.0, dist=20)
+            hide reza with easeoutbottom
+            play sound2 "fx/impact3.wav"
+            scene black with dissolveslow
+            play sound2 "fx/impact3.wav"
+        else:
+            play sound "fx/beeps2.ogg"
+            $ renpy.pause (0.3)
+            play sound "fx/explosion.ogg"
+            scene black with Shake ((0, 0, 0, 0), 3.0, dist=50)
+            $ renpy.pause (4.0)
+            scene dwtdfirecafe with dissolveslow
         $ renpy.pause (2.0)
         $ dwtd.deathsound(5)
         show dwtd_youdied_text at top with easeintop
