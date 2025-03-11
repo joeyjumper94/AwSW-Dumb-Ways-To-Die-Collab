@@ -8,13 +8,14 @@
 # "strange painful sensation" and hypoxia within 15 seconds. Burning sensation on one side, freezing on the other? Blinded by a sun?
 # Breathless
 
-
-init:
-    find label c3conty
-    search say "The next thing that did happen was that I heard Sebastian's voice." for 1000 as dwtb_c3_portal_linknode
-    search say "Let's head back. The Chief has to know about this right away."
-    callto label dwtd_c3_portal_label from dwtb_c3_portal_linknode return here
-
+init python:
+    def dwtd_c4_reza_hideout_link(ml):
+        ml.find_label("c3conty")\
+            .search_say("The next thing that did happen was that I heard Sebastian's voice.")\
+            .hook_to("dwtd_c3_portal_label")\
+            .search_say("Let's head back. The Chief has to know about this right away.")\
+            .link_from("dwtd_c3_portal_linknode")
+    #dwtd_c4_reza_hideout_link(magmalink())
 
 label dwtd_c3_portal_label:
     # n "The next thing that did happen was that I heard Sebastian's voice."
@@ -62,10 +63,9 @@ label dwtd_c3_portal_label:
             c "I guess that means I'm not leaving, huh."
             Sb "Not yet, at least."
             c "Well, what do we do now?"
-            Sb "Let's head back. The Chief has to know about this right away."
+            #Sb "Let's head back. The Chief has to know about this right away."
             # Sb "I've never trusted big electronic machines like this. Guess I'm not wrong."
-            return
-
+            jump dwtd_c3_portal_linknode
 
         # more panic? do we put such emotions in the player's monologue?
         # less text?
@@ -74,7 +74,6 @@ label dwtd_c3_portal_label:
         # check out tel.wav
         # what is double_vision_on and double_vision_off?
 
-        $ renpy.pop_call()
         $ dwtd.will_die()
 
         Sb normal b "And...there you go."
