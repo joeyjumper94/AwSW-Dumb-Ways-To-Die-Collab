@@ -28,7 +28,6 @@ label dwtd_xseb_freeze_complaint:
 
 label dwtd_xseb_freeze_rejection:
     $ dwtd.will_die()
-    $ renpy.pop_call()
 
     # expressions don't show because scene is black already
     Sb disapproval b "Really? Aren't you worried about your health?"

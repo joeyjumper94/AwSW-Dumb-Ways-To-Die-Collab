@@ -9,7 +9,7 @@ init python:
 
 label dwtd_c1_stopslap:
     m "Reza lifted his hand, seemingly to give the generator a light pat."
-
+    $ temp_bool = renpy.random.randint(0,1) == 1
     if dwtd.check_keypoint():
         call screen dwtd_qte("Stop him.")
     else:
@@ -19,30 +19,30 @@ label dwtd_c1_stopslap:
     if not _return:
         $ dwtd.will_die()
         stop music fadeout 1.0
-        if renpy.random.randint(0,1)==1:
+        if temp_bool:
             play sound2 "fx/box1.wav"
             play sound "fx/hiss.ogg"
             queue sound "fx/hiss.ogg"
             m "Reza's slap sent the generator tumbling to the floor.\nImmediately, a hissing could be heard from it."
             c "Nice going Reza, you broke it."
             Rz annoyed "How was I supposed to know that it was that fragile?"
-            c "weren't you paying attention when Anna gave us that generator said to be careful with it?"
+            c "Weren't you paying attention when Anna gave us that generator? She said to be careful with it."
             play sound2 "fx/chair.wav"
             queue sound2 "fx/chair.wav"
             play sound "fx/silence.ogg"
             queue sound "fx/silence.ogg"
             queue sound "fx/silence.ogg"
             queue sound "fx/chair.wav"
-            m "suddenly, everyone was scrambling for the exit"
+            m "Suddenly, everyone was scrambling for the exit"
             Sb drop b "Reza, [player_name], we need to get out of here before the gen-{w=1.0}{nw}"
             play sound "fx/explosion.ogg"
             scene dwtdfirecafe
             show reza angry b
             with Shake ((0, 0, 0, 0), 1.0, dist=20)
             hide reza with easeoutbottom
-            play sound2 "fx/impact3.wav"
+            play sound2 "fx/impact.wav"
             scene black with dissolveslow
-            play sound2 "fx/impact3.wav"
+            play sound2 "fx/impact.wav"
         else:
             play sound "fx/beeps2.ogg"
             $ renpy.pause (0.3)

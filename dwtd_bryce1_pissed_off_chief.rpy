@@ -39,7 +39,7 @@ label dwtd_pissed_off_chief_menu:
         "[[make fun of him]":
             label dwtd_pissed_off_chief_death:
             $ dwtd.will_die()
-            c "ooh yeah you're real scary"
+            c "Why? What are you gonna do?"
             stop music fadeout 1.0
             play sound "fx/growl.wav"
             show bryce angry b with dissolve
